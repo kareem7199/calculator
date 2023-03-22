@@ -1,25 +1,11 @@
 let Screen = document.getElementById("screen");
-let zero = document.getElementById("0");
-let one = document.getElementById("1");
-let two = document.getElementById("2");
-let three = document.getElementById("3");
-let four = document.getElementById("4");
-let five = document.getElementById("5");
-let six = document.getElementById("6");
-let seven = document.getElementById("7");
-let eight = document.getElementById("8");
-let nine = document.getElementById("9");
+let elements = document.getElementsByClassName("number_button");
 let c_button = document.getElementById("c");
-let plus = document.getElementById("+");
-let equal = document.getElementById("equal");
-let multiply = document.getElementById("*");
-let subtraction = document.getElementById("-");
-let division = document.getElementById("/");
-let dot = document.getElementById(".");
 let screenText = document.getElementById("screentext");
 let res = "";
 let ope = false;
 let neg = false;
+
 function calc(num) {
     if (isNaN(+num)) {
         if (ope) {
@@ -68,20 +54,7 @@ function calc_res() {
     res = res.toString();
 }
 
-zero.onclick = () => calc("0");
-one.onclick = () => calc("1");
-two.onclick = () => calc("2");
-three.onclick = () => calc("3");
-four.onclick = () => calc("4");
-five.onclick = () => calc("5");
-six.onclick = () => calc("6");
-seven.onclick = () => calc("7");
-eight.onclick = () => calc("8");
-nine.onclick = () => calc("9");
-dot.onclick = () => calc(".");
-subtraction.onclick = () => calc("-");
-multiply.onclick = () => calc("*");
-plus.onclick = () => calc("+");
-division.onclick = () => calc("/");
 c_button.onclick = () => reset();
-equal.onclick = () => calc_res();
+
+for(let i = 0 ; i < elements.length ; i++)
+    elements[i].onclick = ()=> elements[i].id === "equal"? calc_res() : calc(elements[i].id);  
